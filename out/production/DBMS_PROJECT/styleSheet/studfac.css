@@ -1,0 +1,10 @@
+.root{
+    -fx-background-color: #383838;
+}
+
+.button{
+    -fx-background-color: cornflowerblue;
+    -fx-border-radius: 20px;
+    -fx-fill: aliceblue;
+
+}
