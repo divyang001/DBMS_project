@@ -1,6 +1,9 @@
 package Database_functions;
 
 import DatabaseConnection.DbConnect;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import models.MarksModel;
 import models.ParentModel;
 import models.StudentModel;
 import sample.Student;
@@ -9,6 +12,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by divyang on 7/9/16.
@@ -198,6 +203,128 @@ return obj;
 
         return obj1;
     }
+
+    public ObservableList<MarksModel> marks(String id){
+
+        ObservableList<MarksModel> list= FXCollections.observableArrayList();
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+
+
+        try {
+            connection = DbConnect.MakeConnection();
+            preparedStatement = connection.prepareStatement("SELECT* FROM divyang.grade WHERE id=? ");
+            preparedStatement.setString(1, id);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                MarksModel obj= new MarksModel();
+
+
+                obj.setCourseCode(resultSet.getString("course_id"));
+                obj.setCat(resultSet.getInt("cat"));
+                obj.setPbl(resultSet.getInt("pbl"));
+                obj.setFat(resultSet.getInt("fat"));
+                obj.setGrade(resultSet.getString("grade"));
+                list.add(obj);
+            }
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return list;
+    }
+
+
+
+
+    public ObservableList<MarksModel> ats(String id){
+
+        ObservableList<MarksModel> list= FXCollections.observableArrayList();
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+
+
+        try {
+            connection = DbConnect.MakeConnection();
+            preparedStatement = connection.prepareStatement("SELECT* FROM divyang.attendance WHERE id=? ");
+            preparedStatement.setString(1, id);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                MarksModel obj= new MarksModel();
+
+
+                obj.setCourseCode(resultSet.getString("course_id"));
+                obj.setAttendance(resultSet.getInt("attendance"));
+                list.add(obj);
+            }
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return list;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -59,6 +59,13 @@ details.setOnAction(event -> {
 
         });
 
+        current_sem.setOnAction(event ->{
+
+            Fall obj=new Fall();
+            obj.currentsem(windows,id);
+
+        } );
+
     }
 
 
