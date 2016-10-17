@@ -46,6 +46,8 @@ public class Main  {
         Button ChangeLogin=new Button("ChangeLogin");
         grid.setConstraints(ChangeLogin, 1, 3);
 
+        Label lb= new Label("");
+        grid.setConstraints(lb,1,5);
         StackPane layout2 = new StackPane();
        // Label labels=new Label(status);
         //layout2.getChildren().add(labels);
@@ -71,7 +73,7 @@ public class Main  {
             }
             else
             {
-                // Adding else condition
+               lb.setText("try Again");
             }
 
         });
@@ -85,7 +87,7 @@ public class Main  {
             }
         });
 
-        grid.getChildren().addAll(name,input,pass,input2,login,ChangeLogin);
+        grid.getChildren().addAll(name,input,pass,input2,login,ChangeLogin,lb);
         Scene scene1234 = new Scene(grid, 300, 300);
         scene1234.getStylesheets().add("/styleSheet/VIper.css");
         windows.setScene(scene1234);

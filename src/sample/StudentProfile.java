@@ -12,7 +12,7 @@ import models.StudentModel;
 
 public class StudentProfile {
 
-    public void Profile(Stage windows,String id)
+    public void Profile(Stage windows,String id, String id2)
     {
         javafx.scene.layout.GridPane grid = new GridPane();
         grid.setPadding(new Insets(10, 10, 10, 10));
@@ -61,8 +61,19 @@ public class StudentProfile {
         windows.setScene(scene);
         windows.show();
         back.setOnAction(event -> {
-            Student obj4=new Student();
-            obj4.trying(windows,id);
+
+            if(id2.equals("from1"))
+            {
+                Student obj4=new Student();
+                obj4.trying(windows,id);
+            }
+            else
+            {
+                Faculty obj5 = new Faculty();
+                obj5.MainMenu(windows,id2);
+
+            }
+
         });
 
 

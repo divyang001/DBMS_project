@@ -41,7 +41,7 @@ public class Student {
 
         profile.setOnAction(event ->{
             StudentProfile obj=new StudentProfile();
-            obj.Profile(windows,id);
+            obj.Profile(windows,id,"from1");
                 }
 
         );

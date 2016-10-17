@@ -28,7 +28,7 @@ public class Proctees {
         Label label = new Label();
         Button button = new Button();
 
-        HBoxCell(String labelText, String buttonText, String id,Stage window) {
+        HBoxCell(String labelText, String buttonText, String id,Stage window,String id2) {
             super();
 
             label.setText(labelText);
@@ -41,7 +41,7 @@ public class Proctees {
             button.setOnAction(event -> {
 
                 StudentProfile obj=new StudentProfile();
-                obj.Profile(window,id);
+                obj.Profile(window,id,id2);
             });
         }
     }
@@ -54,7 +54,7 @@ public class Proctees {
         List<HBoxCell> list = new ArrayList<>();
         for(StudentModel stud:listing) {
 
-            list.add(new HBoxCell(stud.getName()+" "  , "View Profile" ,stud.getId(),window));
+            list.add(new HBoxCell(stud.getName()+" "  , "View Profile" ,stud.getId(),window,id));
 
         }
         ObservableList<HBoxCell> myObservableList = FXCollections.observableList(list);
